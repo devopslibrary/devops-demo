@@ -15,7 +15,7 @@ Here are some of the reasons why you may want to use this for demos:
 The app itself is written in PHP, and has been tested on Ubuntu 14.04, with Apache, PHP5, and MySQL installed.  It's very simple though, and should run easily on just about any OS.
 
 ### Story Mode Part I
-*Want to use the app it's meant to be used?  The story below should help you get started*
+*Want to use the app the way it's meant to be used?  The story below should help you get started*
 
 Welcome to your first day at **HaveNoAutomationYet Corp (HNAY)**.  We have an application called '**DevOps Demo**', developed in house.  We have a bunch of developers and system admins, and even a few security guys, and we've hired you to keep literally every single one of them happy and to fix every problem we've ever had with automation.
 
