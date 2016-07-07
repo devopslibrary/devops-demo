@@ -15,11 +15,16 @@ Vagrant.configure(2) do |config|
     debconf-set-selections <<< 'mysql-server mysql-server/root_password password devops'
     debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password devops'
     apt-get install apache2 php5 php5-mysql mysql-server -y
+    rm /var/www/html/*
     echo "ServerName devopsdemo" | sudo tee /etc/apache2/conf-available/fqdn.conf
     a2enconf fqdn
     mysql -uroot -pdevops -e "create database devopsdb"
-    mysql -uroot -pdevops devopsdb < /data/setup.sql
-    rm -rf /var/www/html
-    ln -fs /data /var/www/html
+    mysql -uroot -pdevops devopsdb < /data/devops-demo-1.0.sql
+    tar -xvf /data/devops-demo-1.0.tar.gz -C /var/www/html
+    sed -i -e 's/DBHOST/localhost/g' /var/www/html/config.ini
+    sed -i -e 's/SQLUSER/root/g' /var/www/html/config.ini
+    sed -i -e 's/SQLPASSWORD/devops/g' /var/www/html/config.ini
+    sed -i -e 's/SQLDBNAME/devopsdb/g' /var/www/html/config.ini
+    sed -i -e 's/ENVNAME/Production/g' /var/www/html/config.ini
   SHELL
 end
